@@ -1,0 +1,17 @@
+$vmname=Get-AzVM -ResourceGroupName "POCRG" -Name "myvm" | convertto-json -Depth 20
+
+$vmname | out-string
+
+
+$vmname | out-string | out-file vmtext.txt
+
+get-content ./vmtext.txt
+
+
+$vmname=Get-content -filepath vmtext.json | convertfrom-json
+
+
+$vmname1=Get-content ./vmtext | convertfrom-json
+
+
+$vmname1.OSProfile.ComputerName
